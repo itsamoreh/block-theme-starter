@@ -1,0 +1,20 @@
+/* Comments
+--------------------------------------------- */
+
+.wp-block-post-comments-form .comment-reply-title {
+	margin-bottom: var(--wp--custom--spacing--gap);
+}
+
+.wp-block-post-comments-form input:not([type="submit"]):not([type="checkbox"]),
+.wp-block-post-comments-form textarea {
+	border-color: var(--wp--preset--color--contrast);
+	padding: 8px 16px;
+}
+
+.wp-block-post-comments-form p:not(.form-submit) {
+	margin-bottom: 24px;
+}
+
+.wp-block-post-comments-form .comment-form-cookies-consent label {
+	font-size: var(--wp--preset--font-size--x-small);
+}

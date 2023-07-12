@@ -1,0 +1,20 @@
+/* Separator
+--------------------------------------------- */
+
+.wp-block-separator.is-style-dots:before {
+	font-family: inherit;
+	font-size: var(--wp--preset--font-size--large);
+	letter-spacing: 8px;
+	padding-left: 8px;
+}
+
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+	width: 100px;
+}
+
+.wp-block-separator:not(.is-style-dots),
+.wp-block-separator.has-background:not(.is-style-dots) {
+	border-bottom: 1px solid currentColor;
+	border-top: none;
+	height: 1px;
+}

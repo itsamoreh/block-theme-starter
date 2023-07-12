@@ -1,0 +1,17 @@
+/* Pullquote
+--------------------------------------------- */
+
+@media only screen and (min-width: 800px) {
+	.wp-block-pullquote.alignleft,
+	.wp-block-pullquote.alignright {
+		max-width: 300px;
+	}
+
+	.wp-block-pullquote.alignleft {
+		margin-right: var(--wp--custom--spacing--gap) !important;
+	}
+
+	.wp-block-pullquote.alignright {
+		margin-left: var(--wp--custom--spacing--gap) !important;
+	}
+}

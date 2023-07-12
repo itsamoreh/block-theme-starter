@@ -1,0 +1,6 @@
+{
+	"themes": ["."],
+	"config": {
+		"WP_DEBUG_DISPLAY": true
+	}
+}

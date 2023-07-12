@@ -1,0 +1,25 @@
+{
+	"scripts": {
+		"start": "npx wp-env start",
+		"stop": "npx wp-env stop",
+		"build:blocks": "npm run clean:blocks && wp-scripts build --webpack-src-dir='./blocks' --output-path='./blocks-built' --webpack-copy-php",
+		"build:css": "npm run clean:css && npx postcss --use postcss-import-ext-glob postcss-import postcss-nested -o ./style.css ./assets/css/main.css --no-map",
+		"clean:blocks": "rimraf ./blocks-built",
+		"clean:css": "rimraf ./style.css",
+		"watch:blocks": "npm run clean:blocks && wp-scripts start --webpack-src-dir='./blocks' --output-path='./blocks-built' --webpack-copy-php",
+		"watch:css": "npm run clean:css && npm run build:css -- --watch"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^7.0.0",
+		"@wordpress/prettier-config": "^2.16.0",
+		"@wordpress/scripts": "^26.4.0",
+		"postcss-cli": "^10.1.0",
+		"postcss-import": "^15.1.0",
+		"postcss-import-ext-glob": "^2.1.1",
+		"postcss-nested": "^6.0.1",
+		"rimraf": "^5.0.1"
+	},
+	"prettier": {
+		"extends": "@wordpress/prettier-config"
+	}
+}

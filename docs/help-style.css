@@ -1,0 +1,42 @@
+/* NOTE: This is a regular css file */
+
+/* Make the content a readable width */
+[class*="bts-docs"] #wpbody-content {
+	display: flex;
+	flex-direction: column;
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+[class*="bts-docs"] #wpbody-content {
+	font-size: 18px;
+}
+
+[class*="bts-docs"] #wpbody-content h1,
+[class*="bts-docs"] #wpbody-content h2,
+[class*="bts-docs"] #wpbody-content h3,
+[class*="bts-docs"] #wpbody-content h4 {
+	margin-bottom: 0;
+	line-height: 1.2;
+}
+
+[class*="bts-docs"] #wpbody-content h3 {
+	font-size: 1.1em;
+}
+
+[class*="bts-docs"] #wpbody-content h3 + p {
+	margin-block-start: 0.5em;
+}
+
+[class*="bts-docs"] #wpbody-content p {
+	font-size: inherit;
+}
+
+[class*="bts-docs"] #wpbody-content p + p {
+	margin-block-start: 0;
+	font-size: inherit;
+}
+
+[class*="bts-docs"] #wpbody-content img {
+	max-width: 100%;
+}

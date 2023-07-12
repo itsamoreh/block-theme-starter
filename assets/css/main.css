@@ -1,0 +1,11 @@
+@import "./stylecss-header.css";
+
+/**
+ * The line above injects the WordPress file header. It needs to be first,
+ * before this comment.
+ */
+
+@import "./global.css";
+
+@import-glob "./blocks/**/!(blocks).css";
+@import-glob "./patterns/**/!(patterns).css";
