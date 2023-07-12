@@ -1,5 +1,7 @@
 # Block Theme Starter
 
+![Theme screenshot](screenshot.png)
+
 ## What is this?
 
 This is a barebones WordPress block theme starter. Use it to build your next block theme!
