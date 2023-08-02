@@ -13,6 +13,5 @@ For a quick introduction to the block editor, check out the [Gutenberg Demo](htt
 ## Contents
 
 1. [Glossary](#glossary)
-1. [Gradient Highlight Headings](#gradient-highlight-headings)
 
 ---
