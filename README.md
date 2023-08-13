@@ -49,3 +49,16 @@ npm run watch:blocks
 
 This will use wp-scripts to watch for changes to your blocks inside `blocks/` and automatically rebuild them when necessary.
 The blocks are output to the `blocks-built/` directory. Make sure to enqueue the built blocks in the theme.
+
+## Theme Documentation
+
+The `docs` directory is where you can place documentation for your theme.
+
+Markdown files in `docs/editors` and `docs/developers`  will be parsed and displayed in the
+admin panel. This is a great place to explain how to use your theme, what
+features it has, and any other information that might be useful to your
+WordPress users. Place images in `docs/editors/img` or `docs/developers/img` directory 
+and link to them in your markdown files. Use relative links.
+
+_Note_: You need to keep the table of contents in `developers/_index.md` and
+`editors/_index.md` up to date manually.
