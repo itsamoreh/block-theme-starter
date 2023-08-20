@@ -2,6 +2,14 @@
 
 ![Theme screenshot](screenshot.png)
 
+## WIP
+
+This is a work in progress. In it's current state, it's great for building a simple block theme.
+
+Coming soon:
+
+* Editor and frontend js build/watch with wp-scripts
+
 ## What is this?
 
 This is a barebones WordPress block theme starter. Use it to build your next block theme!
