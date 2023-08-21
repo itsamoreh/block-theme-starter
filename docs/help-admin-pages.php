@@ -3,7 +3,7 @@
  * Add documentation admin pages.
  * New markdown files in /docs will be automatically added.
  */
-namespace itsamoreh\BlockThemeStarter\Docs;
+namespace bts\docs;
 
 // Include the Parsedown library
 require_once get_template_directory() . '/lib/Parsedown.php';
@@ -17,7 +17,7 @@ function add_admin_page() {
 
 	// Add the top-level documentation page
 	add_menu_page(
-		'Block Theme Starter Documentation',
+		'BTS Documentation',
 		'Theme Help',
 		'edit_posts',
 		'bts-docs-home',

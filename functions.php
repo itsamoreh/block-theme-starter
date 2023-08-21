@@ -8,7 +8,7 @@
  * @link    https://itsamoreh.dev
  */
 
-namespace itsamoreh\BlockThemeStarter;
+namespace bts;
 
 if ( ! function_exists( 'setup' ) ) {
 
@@ -55,58 +55,67 @@ function enqueue_style_sheet() {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_style_sheet' );
 
 /**
- * Add meta tags.
+ * Enqueue theme frontend scripts.
  */
-function add_meta_tags() {
-	echo '<meta name="description" content="Block Theme Starter.">';
-  }
-add_action('wp_head', __NAMESPACE__ . '\\add_meta_tags');
+function enqueue_frontend_scripts() {
 
-/**
- * Enqueue theme scripts.
- */
-function enqueue_script() {
+	$dir = dirname( __FILE__ );
 
-	wp_enqueue_script( 'alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js', array(), null, false );
-    wp_script_add_data( 'alpinejs', 'defer', true );
+	// Register and enqueue frontend scripts.
+    $frontend_script_asset_path = "$dir/build/frontend.asset.php";
+
+	if ( ! file_exists( $frontend_script_asset_path ) ) {
+        throw new \Error(
+            'Missing frontend script assets! Please follow the setup instructions in the theme README.md.'
+        );
+    }
+
+	$frontend_script_asset = require( $frontend_script_asset_path );
+
+	wp_register_script(
+		'frontend-js',
+		get_template_directory_uri() . '/build/frontend.js',
+		$frontend_script_asset['dependencies'],
+		$frontend_script_asset['version'],
+	);
+
+	wp_enqueue_script( 'frontend-js' );
+
+	// Enqueue AlpineJS IF we need it for custom dynamic blocks.
+	if ( is_dir( "$dir/build/blocks" ) ) {
+		wp_enqueue_script( 'alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js', array(), null, true );
+		wp_script_add_data( 'alpinejs', 'defer', true );
+	}
 
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_script' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
 
 /**
- * Register block pattern categories.
+ * Enqueue theme editor scripts.
  */
-function register_block_pattern_categories() {
-	register_block_pattern_category(
-		'heros',
-		array( 'label' => __( 'Heros', 'bts' ) )
+function enqueue_editor_scripts() {
+
+	$dir = dirname( __FILE__ );
+    $editor_script_asset_path = "$dir/build/editor.asset.php";
+
+	if ( ! file_exists( $editor_script_asset_path ) ) {
+        throw new \Error(
+            'You need to build the theme\'s js by running `npm build`, `npm start` or `npm run build:js`.'
+        );
+    }
+
+	$editor_script_asset = require( $editor_script_asset_path );
+
+	wp_register_script(
+		'editor-js',
+		get_template_directory_uri() . '/build/editor.js',
+		$editor_script_asset['dependencies'],
+		$editor_script_asset['version'],
 	);
-	register_block_pattern_category(
-		'quotes',
-		array( 'label' => __( 'Quotes', 'bts' ) )
-	);
-	register_block_pattern_category(
-		'ctas',
-		array( 'label' => __( 'CTAs', 'bts' ) )
-	);
-	register_block_pattern_category(
-		'combo',
-		array( 'label' => __( 'Combination', 'bts' ) )
-	);
-	register_block_pattern_category(
-		'cards',
-		array( 'label' => __( 'Cards', 'bts' ) )
-	);
-	register_block_pattern_category(
-		'pages',
-		array( 'label' => __( 'Pages', 'bts' ) )
-	);
-	register_block_pattern_category(
-		'other',
-		array( 'label' => __( 'Other', 'bts' ) )
-	);
+
+	wp_enqueue_script( 'editor-js' );
 }
-add_action( 'init', __NAMESPACE__ . '\\register_block_pattern_categories' );
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_scripts' );
 
 /**
  * Help admin documentation pages.
@@ -115,10 +124,13 @@ include get_template_directory() . '/docs/help-admin-pages.php';
 
 /**
  * Hooks and other includes.
+ *
+ * include get_template_directory() . '/inc/example-include.php';
  */
-// include get_template_directory() . '/inc/example-include.php';
 
 /**
  * Register custom Gutenberg blocks.
+ *
+ * include get_template_directory() . '/build/blocks/block-name/index.php';
  */
-// include get_template_directory() . '/blocks-built/example-block/index.php';
+include get_template_directory() . '/build/blocks/10-dynamic-block/index.php';

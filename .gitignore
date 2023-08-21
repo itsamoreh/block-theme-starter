@@ -6,8 +6,8 @@ Thumbs.db
 # ignore dependencies
 node_modules/
 
-# ignore generated style.css
+# ignore built style.css
 style.css
 
-# ignore built blocks
-blocks-built
+# ignore build files
+build/
