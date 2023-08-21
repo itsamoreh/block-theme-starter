@@ -91,17 +91,17 @@ npm run watch:blocks
 
 This theme includes a `.wp-env.json`. To spin up a WordPress environment with
 `wp-env` first make sure
-[docker desktop](https://www.docker.com/products/docker-desktop/) is installed.
+[Docker](https://www.docker.com/products/docker-desktop/) is installed.
 Then run the following command to start the environment:
 
 ```bash
-npx wp-env start
+npm run env:start
 ```
 
 You can stop the environment with Docker Desktop or the stop command:
 
 ```bash
-npx wp-env stop
+npm run env:stop
 ```
 
 See the
