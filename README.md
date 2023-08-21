@@ -11,7 +11,7 @@ This is a barebones WordPress block theme starter. Use it to build your next blo
 1. Make sure you're on node version `18.12.1` or later.
 1. Run `npm install` from this directory to install dependencies.
 1. Run `npm run watch` to watch css, js, and blocks.
-1. Optionally follow the local environment instructions below to spin up a
+1. Optionally follow the [local environment](#optional-local-environment) instructions below to spin up a
    wp-env environment.
 
 | Command         | Action                                                             |
