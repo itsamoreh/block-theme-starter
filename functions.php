@@ -133,4 +133,3 @@ include get_template_directory() . '/docs/help-admin-pages.php';
  *
  * include get_template_directory() . '/build/blocks/block-name/index.php';
  */
-include get_template_directory() . '/build/blocks/10-dynamic-block/index.php';
