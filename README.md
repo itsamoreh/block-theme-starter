@@ -14,11 +14,6 @@ This is a barebones WordPress block theme starter. Use it to build your next blo
 1. Optionally follow the [local environment](#optional-local-environment) instructions below to spin up a
    wp-env environment.
 
-| Command         | Action                                                             |
-| :-------------- | :----------------------------------------------------------------- |
-| `npm run watch` | Watch css, js, and blocks for changes and rebuild for development. |
-| `npm run build` | Builds css, js, and blocks for deployment.                         |
-
 ## Building and Watching CSS
 
 This theme uses PostCSS to process CSS. The main CSS entrypoint is
