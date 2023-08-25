@@ -32,8 +32,8 @@ function add_admin_page() {
 	// Add editor submenu page with rendered documentation
 	add_docs_submenu_page( 'bts-docs-home', $docs_dir . "/editors", 'edit_posts' );
 
-	// Add developer submenu page with rendered documentation
-	add_docs_submenu_page( 'bts-docs-home', $docs_dir . "/developers", 'switch_themes' );
+	// Add admin submenu page with rendered documentation
+	add_docs_submenu_page( 'bts-docs-home', $docs_dir . "/admins", 'switch_themes' );
 }
 add_action( 'admin_menu', __NAMESPACE__ . '\\add_admin_page' );
 
@@ -84,7 +84,7 @@ function markdown_to_html( $index_file ) {
 		$parser = new Parsedown();
 		$html = $parser->text( $file_contents );
 		$html = str_replace( '<img', '<img loading="lazy"', $html );
-		echo $html;
+		echo wp_kses_post( $html );
 	}
 }
 

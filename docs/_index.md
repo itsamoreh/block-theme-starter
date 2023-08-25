@@ -2,7 +2,7 @@
 
 ## [Editor Help](/wp-admin/admin.php?page=bts-docs-editors)
 
-## [Developer Docs](/wp-admin/admin.php?page=bts-docs-developers) (Admins only)
+## [Administrator Docs](/wp-admin/admin.php?page=bts-docs-admins) (Admins only)
 
 ---
 
