@@ -73,19 +73,13 @@ function enqueue_frontend_scripts() {
 	$frontend_script_asset = require( $frontend_script_asset_path );
 
 	wp_register_script(
-		'frontend-js',
+		'bts-frontend-js',
 		get_template_directory_uri() . '/build/frontend.js',
 		$frontend_script_asset['dependencies'],
 		$frontend_script_asset['version'],
 	);
 
-	wp_enqueue_script( 'frontend-js' );
-
-	// Enqueue AlpineJS IF we need it for custom dynamic blocks.
-	if ( is_dir( "$dir/build/blocks" ) ) {
-		wp_enqueue_script( 'alpinejs', 'https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js', array(), null, true );
-		wp_script_add_data( 'alpinejs', 'defer', true );
-	}
+	wp_enqueue_script( 'bts-frontend-js' );
 
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
@@ -100,20 +94,20 @@ function enqueue_editor_scripts() {
 
 	if ( ! file_exists( $editor_script_asset_path ) ) {
         throw new \Error(
-            'You need to build the theme\'s js by running `npm build`, `npm start` or `npm run build:js`.'
+            'You need to build the theme\'s assets by running `npm build`!'
         );
     }
 
 	$editor_script_asset = require( $editor_script_asset_path );
 
 	wp_register_script(
-		'editor-js',
+		'bts-editor-js',
 		get_template_directory_uri() . '/build/editor.js',
 		$editor_script_asset['dependencies'],
 		$editor_script_asset['version'],
 	);
 
-	wp_enqueue_script( 'editor-js' );
+	wp_enqueue_script( 'bts-editor-js' );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_scripts' );
 
@@ -126,10 +120,4 @@ include get_template_directory() . '/docs/help-admin-pages.php';
  * Hooks and other includes.
  *
  * include get_template_directory() . '/inc/example-include.php';
- */
-
-/**
- * Register custom Gutenberg blocks.
- *
- * include get_template_directory() . '/build/blocks/block-name/index.php';
  */

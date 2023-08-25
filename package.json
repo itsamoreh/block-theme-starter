@@ -2,7 +2,7 @@
 	"version": "1.0.0",
 	"scripts": {
 		"watch": "concurrently \"npm:watch:*\"",
-		"build": "npm run build:css && npm run build:js && npm run build:blocks",
+		"build": "npm run build:css && npm run build:js",
 		"env:start": "npx wp-env start",
 		"env:stop": "npx wp-env stop",
 		"build:css": "npm run clean:css && npx postcss --use postcss-import-ext-glob postcss-import postcss-nested -o ./style.css ./assets/css/main.css --no-map --verbose",
@@ -10,10 +10,7 @@
 		"clean:css": "rimraf ./style.css",
 		"build:js": "npm run clean:js && npx wp-scripts build editor=./assets/js/editor frontend=./assets/js/frontend",
 		"watch:js": "npm run clean:js && npm run build:js -- --watch",
-		"clean:js": "rimraf ./build/js",
-		"build:blocks": "npm run clean:blocks && wp-scripts build --webpack-src-dir='./blocks' --output-path='./build/blocks' --webpack-copy-php",
-		"watch:blocks": "npm run clean:blocks && wp-scripts start --webpack-src-dir='./blocks' --output-path='./build/blocks' --webpack-copy-php",
-		"clean:blocks": "rimraf ./build/blocks"
+		"clean:js": "rimraf ./build/js"
 	},
 	"devDependencies": {
 		"@wordpress/env": "^7.0.0",
