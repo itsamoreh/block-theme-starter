@@ -9,7 +9,6 @@
 
 html {
 	scroll-behavior: smooth;
-	font-size: clamp(1rem, 1rem + ((1vw - 0.48rem) * 0.64), 1.333rem);
 }
 
 a,
