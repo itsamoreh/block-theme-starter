@@ -1,0 +1,5 @@
+.bts-primary-hero {
+	&__title {
+		color: red;
+	}
+}

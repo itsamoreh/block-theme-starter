@@ -1,0 +1,5 @@
+.bts-primary-hero {
+	&__link {
+		margin-right: var(--wp--preset--spacing--x-small);
+	}
+}

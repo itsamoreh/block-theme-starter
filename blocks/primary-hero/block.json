@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "bts/primary-hero",
+	"version": "0.1.0",
+	"title": "Primary Hero",
+	"category": "media",
+	"icon": "align-full-width",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"body": {
+			"type": "string",
+			"default": ""
+		},
+		"ctaLink": {
+			"type": "string",
+			"default": ""
+		},
+		"ctaText": {
+			"type": "string",
+			"default": "Primary CTA"
+		},
+		"showCtaLink": {
+			"type": "boolean"
+		},
+		"ctaSecondaryLink": {
+			"type": "string",
+			"default": ""
+		},
+		"ctaSecondaryText": {
+			"type": "string",
+			"default": "Secondary CTA"
+		},
+		"showSecondaryCtaLink": {
+			"type": "boolean"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "bts",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./primary-hero.php",
+	"viewScript": "file:./view.js"
+}
