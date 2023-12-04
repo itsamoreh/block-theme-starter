@@ -23,11 +23,8 @@ if ( ! function_exists( 'setup' ) ) {
 		// Make theme available for translation.
 		load_theme_textdomain( 'bts', get_template_directory() . '/languages' );
 
-		// Enqueue editor styles.
-		add_editor_style( '/style.css' );
-
 		// Disable loading core block inline styles.
-		add_filter( 'should_load_separate_core_block_assets', '__return_false' );
+		add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
 		// Remove core block patterns.
 		remove_theme_support( 'core-block-patterns' );
@@ -40,29 +37,14 @@ if ( ! function_exists( 'setup' ) ) {
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\setup' );
 
 /**
- * Enqueue theme style sheet.
- */
-function enqueue_style_sheet() {
-
-	wp_enqueue_style(
-		'bts',
-		get_template_directory_uri() . '/style.css',
-		array(),
-		wp_get_theme( 'bts' )->get( 'Version' )
-	);
-
-}
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_style_sheet' );
-
-/**
- * Enqueue theme frontend scripts.
+ * Enqueue theme frontend scripts and styles.
  */
 function enqueue_frontend_scripts() {
 
 	$dir = dirname( __FILE__ );
 
 	// Register and enqueue frontend scripts.
-    $frontend_script_asset_path = "$dir/build/frontend.asset.php";
+    $frontend_script_asset_path = "$dir/build/assets/frontend.asset.php";
 
 	if ( ! file_exists( $frontend_script_asset_path ) ) {
         throw new \Error(
@@ -74,23 +56,31 @@ function enqueue_frontend_scripts() {
 
 	wp_register_script(
 		'bts-frontend-js',
-		get_template_directory_uri() . '/build/frontend.js',
+		get_template_directory_uri() . '/build/assets/frontend.js',
 		$frontend_script_asset['dependencies'],
 		$frontend_script_asset['version'],
 	);
 
+	wp_register_style(
+		'bts-frontend-css',
+		get_template_directory_uri() . '/build/assets/frontend.css',
+		[],
+		$frontend_script_asset['version'],
+	);
+
 	wp_enqueue_script( 'bts-frontend-js' );
+	wp_enqueue_style( 'bts-frontend-css' );
 
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_scripts' );
 
 /**
- * Enqueue theme editor scripts.
+ * Enqueue theme editor scripts and styles.
  */
 function enqueue_editor_scripts() {
 
 	$dir = dirname( __FILE__ );
-    $editor_script_asset_path = "$dir/build/editor.asset.php";
+    $editor_script_asset_path = "$dir/build/assets/editor.asset.php";
 
 	if ( ! file_exists( $editor_script_asset_path ) ) {
         throw new \Error(
@@ -102,12 +92,13 @@ function enqueue_editor_scripts() {
 
 	wp_register_script(
 		'bts-editor-js',
-		get_template_directory_uri() . '/build/editor.js',
+		get_template_directory_uri() . '/build/assets/editor.js',
 		$editor_script_asset['dependencies'],
 		$editor_script_asset['version'],
 	);
 
 	wp_enqueue_script( 'bts-editor-js' );
+	add_editor_style( '/build/assets/editor.css' );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_scripts' );
 
@@ -121,3 +112,4 @@ include get_template_directory() . '/docs/help-admin-pages.php';
  *
  * include get_template_directory() . '/inc/example-include.php';
  */
+include get_template_directory() . '/inc/register-custom-blocks.php';

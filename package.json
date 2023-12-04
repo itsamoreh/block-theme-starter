@@ -2,29 +2,37 @@
 	"version": "1.0.0",
 	"scripts": {
 		"watch": "concurrently \"npm:watch:*\"",
-		"build": "npm run build:css && npm run build:js",
+		"build": "npm run clean && npm run build:assets && npm run build:blocks",
+		"clean": "rimraf ./build",
+		"build:assets": "npm run clean:assets && npx wp-scripts build editor=./assets/js/editor frontend=./assets/js/frontend --output-path=./build/assets",
+		"watch:assets": "npm run clean:assets && npm run build:assets -- --watch",
+		"clean:assets": "rimraf ./build/assets",
+		"build:blocks": "npm run clean:blocks && wp-scripts build --webpack-src-dir='./blocks' --output-path='./build/blocks' --webpack-copy-php",
+		"watch:blocks": "npm run clean:blocks && wp-scripts start --webpack-src-dir='./blocks' --output-path='./build/blocks' --webpack-copy-php",
+		"clean:blocks": "rimraf ./build/blocks",
 		"env:start": "npx wp-env start",
-		"env:stop": "npx wp-env stop",
-		"build:css": "npm run clean:css && npx postcss --use postcss-import-ext-glob postcss-import postcss-nested -o ./style.css ./assets/css/main.css --no-map --verbose",
-		"watch:css": "npm run clean:css && npm run build:css -- --watch",
-		"clean:css": "rimraf ./style.css",
-		"build:js": "npm run clean:js && npx wp-scripts build editor=./assets/js/editor frontend=./assets/js/frontend",
-		"watch:js": "npm run clean:js && npm run build:js -- --watch",
-		"clean:js": "rimraf ./build/js"
+		"env:stop": "npx wp-env stop"
+	},
+	"dependencies": {
+		"@wordpress/dom-ready": "^3.40.0"
 	},
 	"devDependencies": {
 		"@wordpress/env": "^7.0.0",
 		"@wordpress/prettier-config": "^2.16.0",
 		"@wordpress/scripts": "^26.4.0",
-		"concurrently": "^8.2.0",
-		"postcss-cli": "^10.1.0",
+		"concurrently": "^8.2.2",
 		"postcss-import": "^15.1.0",
 		"postcss-import-ext-glob": "^2.1.1",
 		"postcss-nested": "^6.0.1",
 		"rimraf": "^5.0.1"
 	},
 	"prettier": "@wordpress/prettier-config",
-	"dependencies": {
-		"@wordpress/dom-ready": "^3.40.0"
+	"postcss": {
+		"plugins": {
+			"postcss-import-ext-glob": {},
+			"postcss-import": {},
+			"postcss-nested": {},
+			"autoprefixer": {}
+		}
 	}
 }
