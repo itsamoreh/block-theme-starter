@@ -4,7 +4,8 @@
 
 ## What is this?
 
-This is a barebones WordPress block theme starter. Use it to build your next block theme!
+This is a barebones WordPress block theme starter. Use it to build your next
+block theme!
 
 This theme is targeted toward agencies building themes for clients.
 
