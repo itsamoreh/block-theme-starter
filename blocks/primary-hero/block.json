@@ -4,42 +4,33 @@
 	"name": "bts/primary-hero",
 	"version": "0.1.0",
 	"title": "Primary Hero",
-	"category": "media",
+	"category": "text",
 	"icon": "align-full-width",
 	"attributes": {
 		"title": {
-			"type": "string",
-			"default": ""
+			"type": "object",
+			"default": {
+				"text": "",
+				"textColor": "",
+				"fontSize": ""
+			}
 		},
 		"body": {
 			"type": "string",
 			"default": ""
 		},
-		"ctaLink": {
-			"type": "string",
-			"default": ""
-		},
-		"ctaText": {
-			"type": "string",
-			"default": "Primary CTA"
-		},
-		"showCtaLink": {
-			"type": "boolean"
-		},
-		"ctaSecondaryLink": {
-			"type": "string",
-			"default": ""
-		},
-		"ctaSecondaryText": {
-			"type": "string",
-			"default": "Secondary CTA"
-		},
-		"showSecondaryCtaLink": {
-			"type": "boolean"
+		"cta": {
+			"type": "object",
+			"default": {
+				"url": "",
+				"text": "Learn More",
+				"show": false
+			}
 		}
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": true
 	},
 	"textdomain": "bts",
 	"editorScript": "file:./index.js",

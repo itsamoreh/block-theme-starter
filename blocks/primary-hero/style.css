@@ -1,5 +1,14 @@
 .bts-primary-hero {
+	padding: var(--wp--preset--spacing--x-large);
+	border: 2px solid var(--wp--preset--color--black);
+
+	&__title {
+		margin-top: 0;
+	}
+
 	&__link {
+		display: inline-block;
+		color: var(--wp--preset--color--white);
 		margin-right: var(--wp--preset--spacing--x-small);
 	}
 }
