@@ -12,9 +12,9 @@
 ?>
 <section <?php echo get_block_wrapper_attributes(['class' => 'bts-primary-hero']); // phpcs:ignore ?>>
 	<div class="bts-primary-hero__content">
-		<h3 class="bts-primary-hero__title">
+		<h2 class="bts-primary-hero__title">
 			<?php echo wp_kses_post($attributes['title']['text']); ?>
-		</h3>
+		</h2>
 		<p class="bts-primary-hero__body">
 			<?php echo wp_kses_post($attributes['body']); ?>
 		</p>
