@@ -7,7 +7,17 @@
 This is a barebones WordPress block theme starter. Use it to build your next
 block theme!
 
-This theme is targeted toward agencies building themes for clients.
+This theme is targeted toward agencies or developers building tightly controlled
+themes for clients. To help with control, the following WordPress core features
+have been removed:
+
+- Core block patterns
+- Core block styles
+- Block directory
+- Openverse integration
+
+If you need custom blocks, build them into the theme. See
+[Custom Blocks](#custom-blocks) for details.
 
 ## Quick Start
 
@@ -61,9 +71,9 @@ command in your terminal:
 npm run watch:blocks
 ```
 
-Blocks bundled with the theme should be design related blocks that are
-theme-specifc. If you're creating a block that adds functionality, consider
-creating a block plugin instead.
+Custom blocks in the theme should be tied to the design or functionality of the
+site. See [10up's reasoning over here](https://arc.net/l/quote/bzaojyph) for
+more information.
 
 ## Optional Local Environment
 
