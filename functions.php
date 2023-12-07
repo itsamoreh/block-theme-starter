@@ -26,6 +26,9 @@ if ( ! function_exists( 'setup' ) ) {
 		// Disable loading core block inline styles.
 		add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
+		// Remove the block directory.
+		remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
+
 		// Remove core block patterns.
 		remove_theme_support( 'core-block-patterns' );
 
@@ -112,4 +115,6 @@ include get_template_directory() . '/docs/help-admin-pages.php';
  *
  * include get_template_directory() . '/inc/example-include.php';
  */
+include get_template_directory() . '/inc/reset/core-block-styles.php';
+include get_template_directory() . '/inc/reset/openverse.php';
 include get_template_directory() . '/inc/register-custom-blocks.php';
