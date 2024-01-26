@@ -11,10 +11,10 @@ This theme is targeted toward agencies or developers building tightly controlled
 themes for clients. To help with control, the following WordPress core features
 have been removed:
 
-- Core block patterns
-- Core block styles
-- Block directory
-- Openverse integration
+-   Core block patterns
+-   Core block styles
+-   Block directory
+-   Openverse integration
 
 If you need custom blocks, build them into the theme. See
 [Custom Blocks](#custom-blocks) for details.
@@ -28,6 +28,63 @@ If you need custom blocks, build them into the theme. See
    [Custom Blocks](#custom-blocks).
 1. Optionally follow the [local environment](#optional-local-environment)
    instructions below to spin up a wp-env environment.
+
+## Workflow
+
+This project provides a minimal starting point for building out WordPress themes
+from finished mockups.
+
+The workflow for building a new theme with this starter might look something
+like this:
+
+1. Build up `theme.json`
+
+    Using the styleguide from the mockups you're working with, add colors, font
+    families, font styles, etc... to `theme.json`. Check out the
+    [Global Settings & Styles](https://developer.wordpress.org/block-editor/how-to-guides/themes/global-settings-and-styles/)
+    section of the Block Editor Handbook to learn about everything that's
+    possible with `theme.json`.
+
+2. Add css mixins
+
+    Create mixins for things like text styles where you need to set multiple
+    properties at the same time. See the
+    [abstracts README](./assets/css/abstracts/README.md) for details.
+
+3. Add core block styles and block variations
+
+    Add styles and/or variations for core blocks like the button block so that
+    the options available in editor match the design. For more information check
+    out the [Block Styles README](./assets/js/editor/block-styles/README.md) and
+    the
+    [Block Variations README](./assets/js/editor/block-variations/README.md).
+    This theme removes all core block styles and variations so you're starting
+    from scratch.
+
+4. Build out block patterns
+
+    Previous steps set the foundation for the theme. Now you can create custom
+    block patterns for the more simple components in the design. Use the
+    [Create Block Theme plugin](https://wordpress.org/plugins/create-block-theme/)
+    to copy the patterns you create in editor to the `/patterns` directory.
+
+    If you need to create custom styles for your patterns, give them class names
+    and add styles to a CSS file in `/assets/css/patterns/`. See the
+    [Block Pattern CSS README](./assets/css/patterns/README.md) for details.
+
+5. Build out custom blocks
+
+    For more complex components in the design, create custom blocks. See the
+    [Custom Blocks README](./blocks/README.md) for more information.
+
+6. Build out page templates
+
+    Once you're done building all components in the design, create your page
+    templates. Use the
+    [Create Block Theme plugin](https://wordpress.org/plugins/create-block-theme/)
+    to copy the templates you create in editor to the `/templates` directory.
+
+7. You're done!
 
 ## Editor and Frontend Assets
 
@@ -53,6 +110,20 @@ npm run watch:assets
 
 This theme uses wp-scripts to build custom Gutenberg blocks. Add your custom
 blocks in the `blocks/` directory. Each block should have its own directory.
+
+### Create Block
+
+This theme includes a custom block template to make it quick to scaffold custom
+blocks and keep everything consistent. To use it run the follwing command:
+
+```bash
+npm run create:block
+```
+
+This will run
+[@wordpress/create-block](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/)
+using the template in `/blocks/_template`. Follow the prompts to set up your
+block.
 
 To build the blocks, run the following command in your terminal:
 
