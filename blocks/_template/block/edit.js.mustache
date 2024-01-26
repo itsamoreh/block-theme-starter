@@ -1,0 +1,37 @@
+import { __ } from '@wordpress/i18n';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
+
+/**
+ * {{namespace}}/{{slug}} Gutenberg block
+ *
+ * @param {Object} props props
+ * @return {Object} JSX
+ */
+const Edit = (props) => {
+	const { attributes, setAttributes } = props;
+	const { title } = attributes;
+
+	const blockProps = useBlockProps({
+		className: '{{namespace}}-{{slug}}',
+	});
+
+	return (
+		<>
+			<div {...blockProps}>
+				<div className="{{namespace}}-{{slug}}__content">
+					<RichText
+						tagName="h2"
+						className="{{namespace}}-{{slug}}__title"
+						placeholder={__('Title here…', 'bp')}
+						value={title}
+						onChange={(newTitle) =>
+							setAttributes({ title: newTitle })
+						}
+					/>
+				</div>
+			</div>
+		</>
+	);
+};
+
+export default Edit;
