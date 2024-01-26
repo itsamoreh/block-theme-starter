@@ -4,3 +4,4 @@
 @import "./global.css";
 
 @import-glob "./blocks/**/!(blocks).css";
+@import-glob "./patterns/**/!(patterns).css";
