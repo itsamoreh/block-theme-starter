@@ -11,16 +11,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-a,
-button,
-input:focus,
-input[type="button"],
-input[type="submit"],
-textarea:focus,
-.wp-element-button {
-	transition: all 0.2s ease-in-out;
-}
-
 b,
 strong {
 	font-weight: var(--wp--custom--font-weight--bold);
@@ -67,11 +57,4 @@ textarea {
 ::placeholder {
 	color: var(--wp--preset--color--black);
 	opacity: 0.5;
-}
-
-.block-library-block__reusable-block-container {
-	width: 100%;
-	max-width: none;
-	margin-right: calc(var(--wp--style--root--padding-right) * -1);
-	margin-left: calc(var(--wp--style--root--padding-left) * -1);
 }
