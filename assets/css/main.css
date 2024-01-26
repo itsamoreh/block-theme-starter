@@ -1,3 +1,6 @@
+@import-glob "./abstracts/**/!(abstracts).css";
+
+/* stylelint-disable-next-line no-invalid-position-at-import-rule */
 @import "./global.css";
 
 @import-glob "./blocks/**/!(blocks).css";
