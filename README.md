@@ -7,16 +7,18 @@
 This is a barebones WordPress block theme starter. Use it to build your next
 block theme!
 
-This theme is targeted toward agencies or developers building tightly controlled
-themes for clients. To help with control, the following WordPress core features
-have been removed:
+This project is targeted toward agencies or developers building tightly
+controlled themes for clients. To facilitate full control of the editing
+experience, the following WordPress core features have been disabled:
 
 -   Core block patterns
 -   Core block styles
 -   Block directory
 -   Openverse integration
 
-If you need custom blocks, build them into the theme. See
+This project comes with a custom block template that you can use with
+[@wordpress/create-block](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/).
+The idea is to build custom blocks into the theme itself. See
 [Custom Blocks](#custom-blocks) for details.
 
 ## Quick Start
@@ -28,6 +30,7 @@ If you need custom blocks, build them into the theme. See
    [Custom Blocks](#custom-blocks).
 1. Optionally follow the [local environment](#optional-local-environment)
    instructions below to spin up a wp-env environment.
+1. Create a new custom block with `npm run create:block`.
 
 ## Workflow
 
@@ -51,7 +54,7 @@ like this:
     properties at the same time. See the
     [abstracts README](./assets/css/abstracts/README.md) for details.
 
-3. Add core block styles and block variations
+3. Add core Block Styles and Block Variations
 
     Add styles and/or variations for core blocks like the button block so that
     the options available in editor match the design. For more information check
@@ -61,7 +64,7 @@ like this:
     This theme removes all core block styles and variations so you're starting
     from scratch.
 
-4. Build out block patterns
+4. Build out Block Patterns
 
     Previous steps set the foundation for the theme. Now you can create custom
     block patterns for the more simple components in the design. Use the
@@ -125,6 +128,19 @@ This will run
 using the template in `/blocks/_template`. Follow the prompts to set up your
 block.
 
+While developing your block you can watch for changes to all blocks and
+automatically rebuild with the following command:
+
+```bash
+npm run watch:blocks
+```
+
+Or watch everything with:
+
+```bash
+npm run watch
+```
+
 To build the blocks, run the following command in your terminal:
 
 ```bash
@@ -134,13 +150,6 @@ npm run build:blocks
 This will take all of your blocks inside `blocks/`, build them with wp-scripts
 and output them to `build/blocks/` directory. Blocks will be automatically
 enqueued in `inc/register-custom-blocks.php`
-
-To watch for changes to your blocks and automatically rebuild, run the following
-command in your terminal:
-
-```bash
-npm run watch:blocks
-```
 
 Custom blocks in the theme should be tied to the design or functionality of the
 site. See [10up's reasoning over here](https://arc.net/l/quote/bzaojyph) for
