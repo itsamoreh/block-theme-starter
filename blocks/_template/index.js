@@ -10,8 +10,8 @@ module.exports = {
 		description: 'A bootstrapped block. Build something beautiful!',
 		category: 'text',
 		dashicon: 'heart',
-		namespace: 'bp',
-		textDomain: 'bp',
+		namespace: 'bts',
+		textDomain: 'bts',
 		supports: {
 			html: false,
 			align: true,
